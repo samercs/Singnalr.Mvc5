@@ -26,5 +26,15 @@ namespace SignalrApp.Controllers
 
             return View();
         }
+
+        public ActionResult Chat()
+        {
+            if (!Request.IsAuthenticated)
+            {
+                var url = Url.Action("Chat", "Home");
+                return RedirectToAction("Login", "Account", new {returnUrl = url});
+            }
+            return View();
+        }
     }
 }
